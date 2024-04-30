@@ -1,0 +1,27 @@
+﻿@model IEnumerable<EventosModel>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Contratante</th>
+            <th scope="col">Empresa</th>
+            <th scope="col">Evento</th>
+            <th scope="col">Última Atualização</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if(Model != null)
+        {
+            @foreach(var evento in Model)
+            {
+                <tr>
+                    <th scope="row">@evento.Contratante</th>
+                    <td>@evento.Empresa</td>
+                    <td>@evento.Evento</td>
+                    <td>@evento.dataUltimaAtualizacao</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
