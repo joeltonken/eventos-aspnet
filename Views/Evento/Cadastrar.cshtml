@@ -12,17 +12,17 @@
     <form method="post" asp-controller="Evento" asp-action="Cadastrar">
         <div class="mb-3">
             <label for="Contratante" class="text-light form-label">Contratante:</label>
-            <input type="text" asp-for="Contratante" class="shadow-none form-control" id="exampleInputContratante" placeholder="Quem está contratando o serviço?">
+            <input type="text" asp-for="Contratante" class="shadow-none form-control text-light" id="exampleInputContratante" placeholder="Quem está contratando o serviço?">
             <span class="text-danger" asp-validation-for="Contratante"></span>
         </div>
         <div class="mb-3">
             <label for="Empresa" class="text-light form-label">Empresa:</label>
-            <input asp-for="Empresa" type="text" class="form-control shadow-none" id="exampleInputEmpresa" placeholder="Quem está oferecendo o serviço?">
+            <input asp-for="Empresa" type="text" class="form-control shadow-none text-light" id="exampleInputEmpresa" placeholder="Quem está oferecendo o serviço?">
             <span class="text-danger" asp-validation-for="Empresa"></span>
         </div>
         <div class="mb-3">
             <label class="text-light form-label" for="Evento">Evento:</label>
-            <input type="text" asp-for="Evento" class="form-control shadow-none" id="exampleInputEvento" placeholder="Qual o nome do evento?">
+            <input type="text" asp-for="Evento" class="form-control shadow-none text-light" id="exampleInputEvento" placeholder="Qual o nome do evento?">
             <span class="text-danger" asp-validation-for="Evento"></span>
         </div>
         <div class="d-flex gap-5 mt-5">

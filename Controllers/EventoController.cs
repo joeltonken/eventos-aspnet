@@ -67,6 +67,8 @@ namespace EventoApplication.Controllers
                 _db.Eventos.Add(eventos);
                 _db.SaveChanges();
 
+                TempData["MensagemSucesso"] = "Cadastro realizado com sucesso!";
+
                 return RedirectToAction("Index");
             }
             return View();
@@ -81,8 +83,13 @@ namespace EventoApplication.Controllers
                 _db.Eventos.Update(evento);
                 _db.SaveChanges();
 
+                TempData["MensagemSucesso"] = "Edição realizada com sucesso!";
+
                 return RedirectToAction("Index");
             }
+
+            TempData["MensagemErro"] = "Erro ao realizar edição!";
+
             return View(evento);
         }
 
@@ -95,6 +102,8 @@ namespace EventoApplication.Controllers
             }
             _db.Eventos.Remove(evento);
             _db.SaveChanges();
+
+            TempData["MensagemSucesso"] = "Exclusão realizada com sucesso!";
 
             return RedirectToAction("Index");
 
