@@ -17,7 +17,7 @@ namespace EventoApplication.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Contratante = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Empresa = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Evento = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     dataUltimaAtualizacao = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>

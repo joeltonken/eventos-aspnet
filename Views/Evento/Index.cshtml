@@ -21,7 +21,7 @@
     }
 
 
-<table id="Eventos" class="table table-lighu table-hover mt-5">
+<table id="Eventos" class="table table-light table-hover mt-5">
     <thead>
         <tr>
             <th scope="col">Contratante</th>
@@ -40,7 +40,7 @@
                 <tr>
                     <th scope="row">@evento.Contratante</th>
                     <td>@evento.Empresa</td>
-                    <td>@evento.Evento</td>
+                    <td>@evento.Nome</td>
                     <td>@evento.dataUltimaAtualizacao</td>
                     <td>
                             <a asp-controller="Evento" asp-action="Editar" asp-route-id="@evento.Id" class="btn btn-warning mx-2"><i class="bi bi-pencil-square mx-2"></i>Editar</a>

@@ -4,6 +4,7 @@ namespace EventoApplication.Models
 {
     public class EventosModel
     {
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Digite o nome do Contratante!")]
@@ -13,7 +14,7 @@ namespace EventoApplication.Models
         public string Empresa { get; set; }
 
         [Required(ErrorMessage = "Digite o nome do Evento!")]
-        public string Evento { get; set; }
+        public string Nome { get; set; }
 
         public DateTime dataUltimaAtualizacao { get; set; } = DateTime.Now;
 

@@ -33,14 +33,14 @@ namespace EventoApplication.Controllers
                 return NotFound();
             }
 
-            EventosModel eventos = _db.Eventos.FirstOrDefault(x => x.Id == id);
+            EventosModel evento = _db.Eventos.FirstOrDefault(x => x.Id == id);
 
-            if (eventos == null) 
+            if (evento == null) 
             {
                 return NotFound();
             }
 
-            return View(eventos);
+            return View(evento);
         }
 
         [HttpGet]
@@ -50,6 +50,7 @@ namespace EventoApplication.Controllers
             {
                 return NotFound();
             }
+
             EventosModel evento = _db.Eventos.FirstOrDefault(x => x.Id == id);
 
             if (evento == null)
@@ -77,10 +78,15 @@ namespace EventoApplication.Controllers
         [HttpPost]
         public IActionResult Editar(EventosModel evento)
         {
-
             if (ModelState.IsValid)
             {
-                _db.Eventos.Update(evento);
+                var eventoDB = _db.Eventos.Find(evento.Id);
+
+                eventoDB.Contratante = evento.Contratante;
+                eventoDB.Empresa = evento.Empresa;
+                eventoDB.Nome = evento.Nome;
+
+                _db.Eventos.Update(eventoDB);
                 _db.SaveChanges();
 
                 TempData["MensagemSucesso"] = "Edição realizada com sucesso!";
@@ -92,6 +98,7 @@ namespace EventoApplication.Controllers
 
             return View(evento);
         }
+
 
         [HttpPost]
         public IActionResult Excluir(EventosModel evento)
@@ -108,7 +115,6 @@ namespace EventoApplication.Controllers
             return RedirectToAction("Index");
 
         }
-
 
 
     }
