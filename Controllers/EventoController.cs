@@ -1,6 +1,8 @@
-﻿using EventoApplication.Data;
+﻿using ClosedXML.Excel;
+using EventoApplication.Data;
 using EventoApplication.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace EventoApplication.Controllers
 {
@@ -58,6 +60,45 @@ namespace EventoApplication.Controllers
                 return NotFound();
             }
             return View(evento);
+        }
+
+        public IActionResult Exportar()
+        {
+            var dados = GetDados();
+            using (XLWorkbook workBook = new XLWorkbook())
+            {
+                workBook.AddWorksheet(dados, "Dados Eventos");
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    workBook.SaveAs(ms);
+                    return File(ms.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Evento.xls");
+                }
+
+            }
+        }
+
+        private DataTable GetDados()
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.TableName = "Dados eventos";
+
+            dataTable.Columns.Add("Contratante", typeof(string));
+            dataTable.Columns.Add("Empresa", typeof(string));
+            dataTable.Columns.Add("Nome do evento", typeof(string));
+            dataTable.Columns.Add("Data do evento", typeof(DateTime));
+
+            var dados = _db.Eventos.ToList();
+
+            if (dados.Count > 0)
+            {
+                dados.ForEach(evento =>
+                {
+                    dataTable.Rows.Add(evento.Contratante, evento.Empresa, evento.Nome, evento.dataUltimaAtualizacao);
+                });
+            }
+
+                return dataTable;
         }
 
         [HttpPost]

@@ -3,7 +3,11 @@
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-5">
         <h1>Eventos</h1>
-        <a class="btn btn-success mx-2" asp-controller="Evento" asp-action="Cadastrar"><i class="bi bi-file-earmark-plus mx-2"></i>Cadastrar novo evento</a>
+        
+        <div>
+            <a class="btn btn-success mx-2" asp-controller="Evento" asp-action="Exportar"><i class="bi bi-file-earmark-plus mx-2"></i>Exportar</a>
+            <a class="btn btn-success mx-2" asp-controller="Evento" asp-action="Cadastrar"><i class="bi bi-file-earmark-plus mx-2"></i>Cadastrar novo evento</a>
+        </div>
     </div>
 
     @if(TempData["MensagemSucesso"] != null)
