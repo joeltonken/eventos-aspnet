@@ -3,12 +3,6 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-foreach (var envVarKey in Environment.GetEnvironmentVariables().Keys)
-{
-    var envVarValue = Environment.GetEnvironmentVariables()[envVarKey];
-    Console.WriteLine($"{envVarKey}: {envVarValue}");
-}
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
